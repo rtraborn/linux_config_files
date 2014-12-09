@@ -1,0 +1,35 @@
+(global-set-key [delete] 'delete-char)
+(display-time)
+(global-font-lock-mode 1)
+(set-face-attribute 'default nil :height 140)
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq scroll-step 1)
+(load "/usr/local/ess/ess-13.05/lisp/ess-site")
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/site-start.d") 
+(add-to-list 'load-path "/home/rtraborn/packages/guide-key/")
+(add-to-list 'load-path "/home/rtraborn/packages/popwin-el")
+(load "auctex.el" nil t t)
+(require 'tex-mik)
+(require 'guide-key)
+(setq guide-key/guide-key-sequence '("C-x r" "C-x 4"))
+(guide-key-mode 1) ; Enable guide-key-mode
+(setq guide-key/idle-delay 0.1) ; Delay mode 0.1
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq c-basic-offset 6)
+(setq-default TeX-master nil)
+(add-hook 'LaTeX-mode-hook 'visual-line-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
+(setq guide-key/highlight-command-regexp
+      '("rectangle"
+        ("register" . font-lock-type-face)
+        ("bookmark" . "hot pink")))
+(setq reftex-plug-into-AUCTeX t)
+(setq c-default-style '((java-mode . "java")
+                                  (awk-mode . "awk")
+                                  (other . "linux")))
+
+
